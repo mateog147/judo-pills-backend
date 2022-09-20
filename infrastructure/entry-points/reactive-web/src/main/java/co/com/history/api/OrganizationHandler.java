@@ -1,10 +1,9 @@
 package co.com.history.api;
 
 import co.com.history.model.organization.Organization;
-import co.com.history.usecase.getallorganizations.GetAllOrganizationsUseCase;
+import co.com.history.usecase.organization.getallorganizations.GetAllOrganizationsUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

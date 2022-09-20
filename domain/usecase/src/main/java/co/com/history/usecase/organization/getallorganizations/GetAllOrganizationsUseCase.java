@@ -1,4 +1,4 @@
-package co.com.history.usecase.getallorganizations;
+package co.com.history.usecase.organization.getallorganizations;
 
 import co.com.history.model.organization.Organization;
 import co.com.history.model.organization.gateways.OrganizationRepository;

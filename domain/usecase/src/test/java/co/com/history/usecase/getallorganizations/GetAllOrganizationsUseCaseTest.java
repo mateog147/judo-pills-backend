@@ -2,6 +2,7 @@ package co.com.history.usecase.getallorganizations;
 
 import co.com.history.model.organization.Organization;
 import co.com.history.model.organization.gateways.OrganizationRepository;
+import co.com.history.usecase.organization.getallorganizations.GetAllOrganizationsUseCase;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -13,7 +14,6 @@ import reactor.test.StepVerifier;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
