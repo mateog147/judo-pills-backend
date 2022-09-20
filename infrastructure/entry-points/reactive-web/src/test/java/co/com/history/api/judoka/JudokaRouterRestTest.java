@@ -40,7 +40,7 @@ class JudokaRouterRestTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Flux.fromIterable(judokas), Judoka.class);
 
-        when(handler.listenGETUseCase()).thenReturn(response);
+        when(handler.getAllJudokas()).thenReturn(response);
 
         testClient.get().uri("/api/judoka")
                 .exchange()

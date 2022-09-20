@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 public class JudokaHandler {
     private  final GetAllJudokasUseCase getAllJudokasUseCase;
 //private  final UseCase2 useCase2;
-    public Mono<ServerResponse> listenGETUseCase() {
+    public Mono<ServerResponse> getAllJudokas() {
 
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
