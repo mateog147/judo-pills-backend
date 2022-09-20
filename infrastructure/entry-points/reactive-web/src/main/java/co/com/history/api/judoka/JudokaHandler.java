@@ -1,7 +1,7 @@
 package co.com.history.api.judoka;
 
 import co.com.history.model.judoka.Judoka;
-import co.com.history.usecase.getalljudokas.GetAllJudokasUseCase;
+import co.com.history.usecase.judoka.getalljudokas.GetAllJudokasUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;

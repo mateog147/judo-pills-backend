@@ -1,4 +1,4 @@
-package co.com.history.usecase.getalljudokas;
+package co.com.history.usecase.judoka.getalljudokas;
 
 import co.com.history.model.judoka.Judoka;
 import co.com.history.model.judoka.gateways.JudokaRepository;
