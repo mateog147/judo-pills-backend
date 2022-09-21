@@ -8,6 +8,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class JudokaMockRepository implements JudokaRepository {
@@ -24,6 +25,14 @@ public class JudokaMockRepository implements JudokaRepository {
 
     @Override
     public Mono<Judoka> findById(String id) {
-        return Mono.just(Judoka.builder().id("j1").name("Jigoro Kano").build());
+
+        Optional<Judoka> judokaFound = list.stream()
+                .filter(judoka -> judoka.getId().equals(id))
+                .findFirst();
+        if(judokaFound.isPresent()){
+            return Mono.just(judokaFound.get());
+        }
+        return Mono.error(new IllegalArgumentException("Id not found"));
+
     }
 }

@@ -1,4 +1,4 @@
-package co.com.history.api;
+package co.com.history.api.organization;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

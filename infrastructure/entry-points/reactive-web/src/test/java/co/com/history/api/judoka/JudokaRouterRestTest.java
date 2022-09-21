@@ -2,12 +2,14 @@ package co.com.history.api.judoka;
 
 import co.com.history.model.judoka.Judoka;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -47,6 +49,27 @@ class JudokaRouterRestTest {
                 .expectStatus().is2xxSuccessful()
                 .expectBodyList(Judoka.class)
                 .isEqualTo(judokas);
+    }
+
+    @Test
+    public void get_judoka_by_id_success() {
+        WebTestClient testClient = WebTestClient
+                .bindToRouterFunction(routerRest.judokaRouterFunction())
+                .build();
+
+        String id = "1";
+        Judoka judoka1 = Judoka.builder().id(id).build();
+        Mono<ServerResponse> response =ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(judoka1), Judoka.class);
+
+        when(handler.getJudoka(Mockito.any())).thenReturn(response);
+
+        testClient.get().uri("/api/judoka/" + id)
+                .exchange()
+                .expectStatus().is2xxSuccessful()
+                .expectBody(Judoka.class)
+                .isEqualTo(judoka1);
     }
 
 }

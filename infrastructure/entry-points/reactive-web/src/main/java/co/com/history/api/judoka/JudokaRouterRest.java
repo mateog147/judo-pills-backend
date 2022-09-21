@@ -16,7 +16,7 @@ public class JudokaRouterRest {
     private final JudokaHandler handler;
 @Bean
 public RouterFunction<ServerResponse> judokaRouterFunction() {
-    return route(GET("/api/judoka"), request -> handler.getAllJudokas());
-
+    return route(GET("/api/judoka"), request -> handler.getAllJudokas())
+            .andRoute(GET("/api/judoka/{id}"), handler::getJudoka);
     }
 }

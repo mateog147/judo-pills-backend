@@ -10,6 +10,8 @@ public class GetJudokaByIdUseCase {
     private final JudokaRepository repository;
 
     public Mono<Judoka> getById(String id){
-        return repository.findById(id);
+
+        return repository.findById(id)
+                .onErrorResume(Mono::error);
     }
 }

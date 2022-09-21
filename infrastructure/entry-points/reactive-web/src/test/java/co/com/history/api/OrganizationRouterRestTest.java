@@ -1,7 +1,7 @@
 package co.com.history.api;
 
-import co.com.history.api.judoka.JudokaHandler;
-import co.com.history.api.judoka.JudokaRouterRest;
+import co.com.history.api.organization.OrganizationHandler;
+import co.com.history.api.organization.OrganizationRouterRest;
 import co.com.history.model.judoka.Judoka;
 import co.com.history.model.organization.Organization;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -20,7 +19,6 @@ import reactor.core.publisher.Mono;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ContextConfiguration(classes = {OrganizationRouterRest.class, OrganizationRouterRest.class})

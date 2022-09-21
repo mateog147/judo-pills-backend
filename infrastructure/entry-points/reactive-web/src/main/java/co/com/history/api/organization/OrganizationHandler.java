@@ -1,4 +1,4 @@
-package co.com.history.api;
+package co.com.history.api.organization;
 
 import co.com.history.model.organization.Organization;
 import co.com.history.usecase.organization.getallorganizations.GetAllOrganizationsUseCase;
