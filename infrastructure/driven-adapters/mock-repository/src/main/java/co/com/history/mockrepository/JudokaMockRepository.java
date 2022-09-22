@@ -14,7 +14,12 @@ import java.util.Optional;
 public class JudokaMockRepository implements JudokaRepository {
 
     private final List<Judoka> list = Arrays.asList(
-            Judoka.builder().id("j1").name("Jigoro Kano").build(),
+            Judoka.builder()
+                    .id("j1")
+                    .name("Jigoro Kano")
+                    .image("https://es.wikipedia.org/wiki/Jigor%C5%8D_Kan%C5%8D#/media/Archivo:Kan%C5%8D_Jigor%C5%8D_c1937.jpg")
+                    .history("")
+                    .build(),
             Judoka.builder().id("j2").name("Keiko Fukuda").build(),
             Judoka.builder().id("j3").name("Shohei Ono").build()
     );
