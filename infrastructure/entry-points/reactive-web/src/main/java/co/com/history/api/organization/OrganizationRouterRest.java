@@ -13,7 +13,8 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class OrganizationRouterRest {
 @Bean
 public RouterFunction<ServerResponse> OrganizationRouterFunction(OrganizationHandler handler) {
-    return route(GET("/api/organization"), request -> handler.getAllOrganization());
+    return route(GET("/api/organization"), request -> handler.getAllOrganization())
+            .and(route(GET("/api/organization/{id}"), handler::getOrganization));
     //.andRoute(POST("/api/usecase/otherpath"), handler::listenPOSTUseCase).and(route(GET("/api/otherusercase/path"), handler::listenGETOtherUseCase));
 
     }

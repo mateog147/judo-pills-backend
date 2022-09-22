@@ -17,6 +17,8 @@ import reactor.core.publisher.Mono;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ContextConfiguration(classes = {JudokaRouterRest.class, JudokaHandler.class})
@@ -63,13 +65,14 @@ class JudokaRouterRestTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(judoka1), Judoka.class);
 
-        when(handler.getJudoka(Mockito.any())).thenReturn(response);
+        when(handler.getJudoka(any())).thenReturn(response);
 
         testClient.get().uri("/api/judoka/" + id)
                 .exchange()
                 .expectStatus().is2xxSuccessful()
                 .expectBody(Judoka.class)
                 .isEqualTo(judoka1);
+        verify(handler).getJudoka(any());
     }
 
 }

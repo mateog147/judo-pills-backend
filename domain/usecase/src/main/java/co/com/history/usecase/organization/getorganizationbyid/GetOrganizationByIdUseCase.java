@@ -10,6 +10,7 @@ public class GetOrganizationByIdUseCase {
     private final OrganizationRepository repository;
 
     public Mono<Organization> getById(String id){
-        return repository.findById(id);
+        return repository.findById(id)
+                .onErrorResume(Mono::error);
     }
 }
