@@ -15,24 +15,24 @@ import java.util.Set;
 @NoArgsConstructor
 public class Judoka extends Pill {
 
-    private String grade;
+    private String rank;
     private String beginning;
     private Set<Achievement> achievements;
 
     @Builder
-    public Judoka(String id, String name, String image, String history, List<String> references, String grade, String beginning, Set<Achievement> achievements) {
+    public Judoka(String id, String name, String image, String history, List<String> references, String rank, String beginning, Set<Achievement> achievements) {
         super(id, name, image, history, references);
-        this.grade = grade;
+        this.rank = rank;
         this.beginning = beginning;
         this.achievements = achievements;
     }
 
     public String getGrade() {
-        return grade;
+        return rank;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
+    public void setGrade(String rank) {
+        this.rank = rank;
     }
 
     public String getBeginning() {
