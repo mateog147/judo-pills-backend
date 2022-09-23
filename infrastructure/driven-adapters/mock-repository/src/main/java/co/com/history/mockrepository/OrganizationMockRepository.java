@@ -21,12 +21,14 @@ public class OrganizationMockRepository implements OrganizationRepository {
                     .history("Historia que año se fundo y todo eso")
                     .references(List.of("https://es.wikipedia.org/wiki/Federaci%C3%B3n_Internacional_de_Judo"))
                     .judokasIds(new HashSet<>(List.of("j1")))
+                    .year(1951)
                     .build(),
             Organization.builder()
                     .id("o2")
                     .name("Confederación panamericana de judo CPJ")
                     .image("https://panamjudo.org/Content/images/logo-CPJ.white.png")
                     .history("Historia que año se fundo y todo eso")
+                    .year(2009)
                     .references(List.of("https://panamjudo.org/es/c/acerca-de-la-cpj-4"))
                     .build()
     );
