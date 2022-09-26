@@ -1,10 +1,13 @@
 package co.com.history.api.organization;
 
+import co.com.history.model.Pill;
 import co.com.history.model.organization.Organization;
 import co.com.history.usecase.judoka.getjudokabyid.GetJudokaByIdUseCase;
+import co.com.history.usecase.organization.addneworganization.AddNewOrganizationUseCase;
 import co.com.history.usecase.organization.getallorganizations.GetAllOrganizationsUseCase;
 import co.com.history.usecase.organization.getorganizationbyid.GetOrganizationByIdUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -16,6 +19,8 @@ import reactor.core.publisher.Mono;
 public class OrganizationHandler {
     private final GetAllOrganizationsUseCase getAllOrganizationsUseCase;
     private  final GetOrganizationByIdUseCase getOrganizationByIdUseCase;
+
+    private final AddNewOrganizationUseCase addNewOrganizationUseCase;
     public Mono<ServerResponse> getAllOrganization() {
         Flux<Organization> organizationFlux = getAllOrganizationsUseCase.getAll();
         return ServerResponse.ok().body(organizationFlux, Flux.class);
@@ -29,13 +34,16 @@ public class OrganizationHandler {
                 .onErrorResume(err -> ServerResponse.badRequest().bodyValue("Id not found"));
     }
 
-    /*public Mono<ServerResponse> listenGETOtherUseCase(ServerRequest serverRequest) {
-        // useCase2.logic();
-        return ServerResponse.ok().bodyValue("");
+    public Mono<ServerResponse> addOrganization(ServerRequest serverRequest) {
+        System.out.println("No anda" + serverRequest.toString());
+        return serverRequest.bodyToMono(Organization.class)
+                .flatMap(item -> addNewOrganizationUseCase.add(item))
+                .flatMap(organization -> {
+                    System.out.println("PUTAAAAAAAAA");
+                    return ServerResponse.ok()
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .body(Mono.just(organization),Organization.class);
+                })
+                .onErrorResume(err -> ServerResponse.badRequest().bodyValue(err.getMessage()));
     }
-
-    public Mono<ServerResponse> listenPOSTUseCase(ServerRequest serverRequest) {
-        // usecase.logic();
-        return ServerResponse.ok().bodyValue("");
-    }*/
 }

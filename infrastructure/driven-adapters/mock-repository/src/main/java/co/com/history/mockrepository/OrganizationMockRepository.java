@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Repository
 public class OrganizationMockRepository implements OrganizationRepository {
-    private final List<Organization> list = Arrays.asList(
+    private List<Organization> list = Arrays.asList(
             Organization.builder()
                     .id("o1")
                     .name("International Judo Federation IJF")
@@ -45,5 +45,15 @@ public class OrganizationMockRepository implements OrganizationRepository {
             return Mono.just(orgFound.get());
         }
         return Mono.error(new IllegalArgumentException("Id not found"));
+    }
+
+    @Override
+    public Mono<Organization> save(Organization newOrganization) {
+        Organization newOrg = newOrganization
+                .toBuilder()
+                .id("03")
+                .build();
+        this.list.add(newOrg);
+        return Mono.just(newOrg);
     }
 }

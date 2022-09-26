@@ -8,4 +8,5 @@ public interface OrganizationRepository {
     Flux<Organization> findAll();
 
     Mono<Organization> findById(String id);
+    Mono<Organization> save(Organization newOrganization);
 }
