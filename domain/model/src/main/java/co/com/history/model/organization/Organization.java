@@ -19,12 +19,17 @@ public class Organization  {//extends Pill
     protected String name;
     protected String image;
     protected String history;
+    private Integer year;
     protected List<String> references;
     private Set<String> judokasIds;
 
     /*@Builder(toBuilder = true)
     public Organization(String id, String name, String image, String history, List<String> references, Set<String> judokasIds) {
         super(id, name, image, history, references);
+
+    @Builder
+    public Organization(String id, String name, String image, String history, List<String> references,Integer year, Set<String> judokasIds) {
+        super(id, name, image, history, year, references);
         this.judokasIds = judokasIds;
     }
 

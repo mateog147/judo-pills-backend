@@ -15,5 +15,6 @@ public abstract class Pill {
     protected String name;
     protected String image;
     protected String history;
+    protected Integer year;
     protected List<String> references;
 }

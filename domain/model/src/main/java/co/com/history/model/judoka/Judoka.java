@@ -20,8 +20,8 @@ public class Judoka extends Pill {
     private Set<Achievement> achievements;
 
     @Builder
-    public Judoka(String id, String name, String image, String history, List<String> references, String rank, String beginning, Set<Achievement> achievements) {
-        super(id, name, image, history, references);
+    public Judoka(String id, String name, String image, String history,Integer year, List<String> references, String rank, String beginning, Set<Achievement> achievements) {
+        super(id, name, image, history, year,  references);
         this.rank = rank;
         this.beginning = beginning;
         this.achievements = achievements;
