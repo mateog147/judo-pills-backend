@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -35,7 +36,9 @@ public class OrganizationMockRepository implements OrganizationRepository {
 
     @Override
     public Flux<Organization> findAll() {
-        return Flux.fromIterable(list);
+        return Flux.fromIterable(list)
+                .delayElements(Duration.ofSeconds(3))
+                .log();
     }
 
     @Override
@@ -55,7 +58,6 @@ public class OrganizationMockRepository implements OrganizationRepository {
                 .toBuilder()
                 .id("03")
                 .build();
-        this.list.add(newOrg);
         return Mono.just(newOrg);
     }
 }

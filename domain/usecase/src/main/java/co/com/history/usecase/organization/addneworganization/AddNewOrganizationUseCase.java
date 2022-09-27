@@ -10,6 +10,7 @@ public class AddNewOrganizationUseCase {
     private final OrganizationRepository repository;
 
     public Mono<Organization> add(Organization organization){
+        System.out.println("Lo voy a guardar");
         return repository.save(organization);
     }
 }
