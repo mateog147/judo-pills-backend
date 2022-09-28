@@ -44,7 +44,7 @@ class JudokaRouterRestTest {
 
         when(handler.getAllJudokas()).thenReturn(response);
 
-        testClient.get().uri("/api/judoka")
+        testClient.get().uri("/api/judokas")
                 .exchange()
                 .expectStatus().is2xxSuccessful()
                 .expectBodyList(Judoka.class)
@@ -65,7 +65,7 @@ class JudokaRouterRestTest {
 
         when(handler.getJudoka(any())).thenReturn(response);
 
-        testClient.get().uri("/api/judoka/" + id)
+        testClient.get().uri("/api/judokas/" + id)
                 .exchange()
                 .expectStatus().is2xxSuccessful()
                 .expectBody(Judoka.class)

@@ -34,7 +34,7 @@ class OrganizationRouterRestTest {
 
 
     @Test
-    public void get_organizations_success() {
+    void get_organizations_success() {
         WebTestClient testClient = WebTestClient
                 .bindToRouterFunction(routerRest.OrganizationRouterFunction(handler))
                 .build();
@@ -50,7 +50,7 @@ class OrganizationRouterRestTest {
 
         when(handler.getAllOrganization()).thenReturn(response);
 
-        testClient.get().uri("/api/organization")
+        testClient.get().uri("/api/organizations")
                 .exchange()
                 .expectStatus().is2xxSuccessful()
                 .expectBodyList(Organization.class)
@@ -58,7 +58,7 @@ class OrganizationRouterRestTest {
     }
 
     @Test
-    public void get_organization_by_id_success() {
+    void get_organization_by_id_success() {
         WebTestClient testClient = WebTestClient
                 .bindToRouterFunction(routerRest.OrganizationRouterFunction(handler))
                 .build();
@@ -69,13 +69,31 @@ class OrganizationRouterRestTest {
                 .body(Mono.just(org), Organization.class);
         when(handler.getOrganization(any())).thenReturn(response);
 
-        testClient.get().uri("/api/organization/" + id)
+        testClient.get().uri("/api/organizations/" + id)
                 .exchange()
                 .expectStatus().is2xxSuccessful()
                 .expectBody(Organization.class)
                 .isEqualTo(org);
         verify(handler).getOrganization(any());
+    }
 
+    @Test
+    void create_new_item_success(){
+        WebTestClient testClient = WebTestClient
+                .bindToRouterFunction(routerRest.OrganizationRouterFunction(handler))
+                .build();
+        String id = "xxx";
+        Organization org = Organization.builder().id(id).build();
+        Mono<ServerResponse> response = ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(org), Organization.class);
+        when(handler.addOrganization(any())).thenReturn(response);
 
+        testClient.post().uri("/api/organizations")
+                .body(Mono.just(org), Organization.class)
+                .exchange()
+                .expectStatus().is2xxSuccessful()
+                .expectBody(Organization.class)
+                .isEqualTo(org);
     }
 }
