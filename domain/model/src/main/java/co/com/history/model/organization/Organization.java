@@ -6,30 +6,26 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(toBuilder = true)
-@Data
-public class Organization  {//extends Pill
-    protected String id;
-    protected String name;
-    protected String image;
-    protected String history;
-    private Integer year;
-    protected List<String> references;
+public class Organization  extends Pill{
+
     private Set<String> judokasIds;
 
-    /*@Builder(toBuilder = true)
-    public Organization(String id, String name, String image, String history, List<String> references, Set<String> judokasIds) {
-        super(id, name, image, history, references);
-
+    /*@Builder
+    public Organization(String id, String name, String image, String history, Date start_year, List<String> references, String rank, String beginning) {
+        super(id, name, image, history, start_year, references);
+        this.judokasIds = new HashSet<>();
+    }*/
     @Builder
-    public Organization(String id, String name, String image, String history, List<String> references,Integer year, Set<String> judokasIds) {
-        super(id, name, image, history, year, references);
+    public Organization(String id, String name, String image, String country, String history, Date start_year, List<String> references, String rank, String beginning, Set<String> judokasIds) {
+        super(id, name, image, country, history, start_year, references);
         this.judokasIds = judokasIds;
     }
 
@@ -39,5 +35,6 @@ public class Organization  {//extends Pill
 
     public void setJudokasIds(Set<String> judokasIds) {
         this.judokasIds = judokasIds;
-    }*/
+    }
+
 }

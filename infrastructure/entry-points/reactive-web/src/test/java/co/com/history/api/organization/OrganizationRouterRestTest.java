@@ -39,9 +39,9 @@ class OrganizationRouterRestTest {
                 .bindToRouterFunction(routerRest.OrganizationRouterFunction(handler))
                 .build();
 
-        Organization org1 = Organization.builder().id("1").build();
-        Organization org2 = Organization.builder().id("2").build();
-        Organization org3 = Organization.builder().id("3").build();
+        Organization org1 = Organization.builder().build();
+        Organization org2 = Organization.builder().build();
+        Organization org3 = Organization.builder().build();
         List<Organization> organizations = Arrays.asList(org1, org2, org3);
         Mono<ServerResponse> response = ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
@@ -63,7 +63,7 @@ class OrganizationRouterRestTest {
                 .bindToRouterFunction(routerRest.OrganizationRouterFunction(handler))
                 .build();
         String id = "xxx";
-        Organization org = Organization.builder().id(id).build();
+        Organization org = Organization.builder().build();
         Mono<ServerResponse> response = ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(org), Organization.class);
@@ -83,7 +83,7 @@ class OrganizationRouterRestTest {
                 .bindToRouterFunction(routerRest.OrganizationRouterFunction(handler))
                 .build();
         String id = "xxx";
-        Organization org = Organization.builder().id(id).build();
+        Organization org = Organization.builder().build();
         Mono<ServerResponse> response = ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(org), Organization.class);

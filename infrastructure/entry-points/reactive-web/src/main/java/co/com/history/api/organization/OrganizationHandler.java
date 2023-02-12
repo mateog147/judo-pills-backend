@@ -37,10 +37,12 @@ public class OrganizationHandler {
     public Mono<ServerResponse> addOrganization(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(Organization.class)
                 .map(organization -> {
-                    return organization;
+                    System.out.println(organization);
+                    return  organization;
                 })
                 .flatMap(item -> addNewOrganizationUseCase.add(item))
                 .flatMap(organization -> {
+                    System.out.println("Al ultimo flat llega: " + organization.toString());
                     return ServerResponse.ok()
                             .contentType(MediaType.APPLICATION_JSON)
                             .body(Mono.just(organization),Organization.class);

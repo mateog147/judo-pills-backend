@@ -63,6 +63,7 @@ tasks.withType(JavaCompile) {
     options.compilerArgs = [
             '-Amapstruct.suppressGeneratorTimestamp=true'
     ]
+    options.encoding = 'UTF-8'
 }
 tasks.named('wrapper') {
     gradleVersion = '7.4.2'

@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -20,8 +21,8 @@ public class Judoka extends Pill {
     private Set<Achievement> achievements;
 
     @Builder
-    public Judoka(String id, String name, String image, String history,Integer year, List<String> references, String rank, String beginning, Set<Achievement> achievements) {
-        super(id, name, image, history, year,  references);
+    public Judoka(String id, String name, String image,String country, String history, Date start_year, List<String> references, String rank, String beginning, Set<Achievement> achievements) {
+        super(id, name, image, country, history, start_year,  references);
         this.rank = rank;
         this.beginning = beginning;
         this.achievements = achievements;

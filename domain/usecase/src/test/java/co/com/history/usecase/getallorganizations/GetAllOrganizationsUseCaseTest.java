@@ -26,8 +26,8 @@ class GetAllOrganizationsUseCaseTest {
 
     @Test
     public void get_all_organization_success(){
-        Organization org1 = Organization.builder().id("o1").build();
-        Organization org2 = Organization.builder().id("o2").build();
+        Organization org1 = Organization.builder().build();
+        Organization org2 = Organization.builder().build();
         List<Organization> organizations = Arrays.asList(org1, org2);
         when(repository.findAll()).thenReturn(Flux.fromIterable(organizations));
 
